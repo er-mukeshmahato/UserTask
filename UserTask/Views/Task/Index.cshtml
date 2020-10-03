@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<UserTask.Library.Entity.Model.UserTasks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 450px;
+            padding: 0 10px;
+        }
+
+        .new {
+            padding-left: 347px;
+        }
+
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 0 -5px;
+        }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        /* Responsive columns */
+
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+
+
+
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <h3>Task</h3>
+
+            
+            <table class="table">
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                           
+                            <td>
+                                <input type="checkbox" name="type" value=@item.Name />
+
+                                @item.Name
+                            </td>
+                            <td>
+                                <a asp-action="Update" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+
+
+                                <a asp-action="DeleteTask" asp-route-id="@item.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="new">
+                <a asp-action="Create"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://use.fontawesome.com/4131084efc.js"></script>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<UserTask.Library.Entity.Model.UserModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<head>
+    <script src="https://use.fontawesome.com/4131084efc.js"></script>
+    
+</head>
+
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            
+            <td>
+                <a asp-action="UpdateUser" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+
+
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

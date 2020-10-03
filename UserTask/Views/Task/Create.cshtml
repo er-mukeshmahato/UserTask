@@ -1,0 +1,192 @@
+﻿@model UserTask.Library.Entity.Model.UserTasks
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-6"> 
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="row-fluid align-content-center">
+                    <p>
+                        <input asp-for="Name" placeholder="Add Task" style="height:40px; width:250px;border:2px solid black" />
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 33%;
+            padding: 0 10px;
+        }
+
+        .new {
+            padding-left: 347px;
+        }
+
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            margin: 0 -5px;
+        }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        /* Responsive columns */
+
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+
+        #card1 {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+        #card2 {
+            width:400px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+    </style>
+    <script src="https://use.fontawesome.com/4131084efc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <h3 style="text-align:center">TaskList</h3>
+                <table class="table">
+
+                    <tbody>
+                        @foreach (var item in ViewBag.data)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="type" value=@item.Name />
+
+                                    @item.Name
+                                </td>
+                                <td>
+                                    <a asp-action="Update" asp-route-id="@item.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+
+
+                                    <a asp-action="DeleteTask" asp-route-id="@item.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+        <div class="column">
+            <h3><i class="fa fa-list-alt" aria-hidden="true"></i>  To do List</h3>
+            <div id="card1">
+
+            </div>
+            <br />
+            <div style="width:400px;">
+                <div style="float: left; width: 130px">
+                    <a asp-controller="Board" asp-action="WorkingList" class="btn btn-info" >My Task <i class="fa fa-list-alt" aria-hidden="true"></i>  </a>
+                </div>
+                <div style="float: right; width: 225px">
+                    <button id="btnGet" class="btn btn-success">Assign</button>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <h3><i class="fa fa-commenting" aria-hidden="true"></i> Activity</h3>
+            <div id="card2">
+                @foreach (var item in ViewBag.lst)
+                {
+
+                    <div class="card-body">
+                        <div style="background-color:rgb(128, 128, 128);color:black;padding:20px;">
+
+                            <p>@item.Name<span>&nbsp;@item.Status</span>&nbsp;<strong>@item.FullName</strong></p>
+                        </div>
+
+                    </div>
+                }
+            </div>
+           
+
+        </div>
+
+
+    </div>
+    
+    <script>
+            setTimeout(function(){
+                window.location.reload(1);
+            }, 20000);
+   
+        $('input').on('click', function () {
+               var array = [];
+            $('#card1').empty();
+            $("input:checked").each(function () {
+                array.push($(this).val());
+            });
+            $.each(array, function (index, value) {
+
+                $("#card1").append('<p style="height:30px"  >:'+ value + '</p>');
+            });
+        });
+        $(function () {
+            $("#btnGet").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Board/Add",
+                    data: { "name":$("#card1").text() },
+                    success: function (response) {
+                        console.log('Sucess');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+                $('#card1').empty();    
+            });
+        });        
+    </script>
+</body>
+
+

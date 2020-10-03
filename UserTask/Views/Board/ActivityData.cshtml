@@ -1,0 +1,35 @@
+﻿@model IEnumerable<UserTask.Library.Entity.Model.Activitydata>
+
+@{
+    ViewData["Title"] = "ActivityData";
+}
+
+<h1>ActivityData</h1>
+
+
+
+<div class="col-6">
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="card ">
+
+            <div class="card">
+                <div class="card-body">
+                    <div style="background-color:rgb(128, 128, 128);color:black;padding:20px;">
+                        
+                        <p>@item.Name<span>&nbsp;@item.Status</span>&nbsp;<strong>@item.FullName</strong></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    }
+</div>
+
+

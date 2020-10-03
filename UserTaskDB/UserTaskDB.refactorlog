@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a186088a-2d1e-463a-beb8-ea221a9e476b" ChangeDateTime="09/29/2020 13:55:35">
+    <Property Name="ElementName" Value="[dbo].[Task].[completedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Task]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CompletedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="abcf524c-7d1e-4ccf-ac99-162d7a81dffb" ChangeDateTime="10/01/2020 08:10:25">
+    <Property Name="ElementName" Value="[dbo].[Activity].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activity]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TaskId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a9739563-2271-49af-8625-c9640c248a96" ChangeDateTime="10/01/2020 08:11:10">
+    <Property Name="ElementName" Value="[dbo].[Activity].[completed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activity]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Completed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4e7b55a3-3ed6-4552-961b-a3df9f8e10ba" ChangeDateTime="10/01/2020 08:12:12">
+    <Property Name="ElementName" Value="[dbo].[Activity].[completedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activity]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CompletedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ec230526-2de3-4d50-abe5-64e607619ac7" ChangeDateTime="10/01/2020 08:18:09">
+    <Property Name="ElementName" Value="[dbo].[Activity].[TaskId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activity]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+</Operations>
